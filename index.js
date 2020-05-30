@@ -9,9 +9,11 @@ for (var i = 0; i < buttons.length; i++) {
     if (value == "+" || value == "-" || value == "/" || value == "*") {
       operator = value;
       operand1 = parseFloat(display.textContent);
-      display.innerText = "";
+      display.innerText = operand1 + operator;
     } else if (value == "=") {
-      operand2 = parseFloat(display.textContent);
+      var array = display.textContent.split(operator);
+      console.log(array);
+      operand2 = parseFloat(array[1]);
       var result = eval(operand1 + " " + operator + " " + operand2);
       display.innerText = result;
     } else if (value == "AC") {
