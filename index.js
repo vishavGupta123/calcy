@@ -3,6 +3,7 @@ var display = document.getElementById("display");
 var operand1 = 0;
 var operand2 = null;
 var operator = null;
+var minusPlus = "plus";
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", function () {
     var value = this.getAttribute("data-value");
@@ -24,6 +25,18 @@ for (var i = 0; i < buttons.length; i++) {
       operand2 = 100;
       var result = eval(operand1 + " " + operator + " " + operand2);
       display.innerText = result;
+    } else if (value == "+/-") {
+      if (minusPlus === "plus") {
+        operator = "+";
+        operand1 = parseFloat(display.textContent);
+        display.innerText = operand1 + operator;
+        minusPlus = "minus";
+      } else {
+        operator = "-";
+        operand1 = parseFloat(display.textContent);
+        display.innerText = operand1 + operator;
+        minusPlus = "plus";
+      }
     } else {
       display.innerText += value;
     }
